@@ -48,4 +48,8 @@ public class StudentService {
             newStudents.remove(randomIndex);
         }
     }
+
+    public Map<String, List<StudentDto>> getGroups() {
+        return studentRepository.getGroups();
+    }
 }

@@ -34,4 +34,9 @@ public class StudentController {
         studentService.getAllRandomGroups();
         return ResponseEntity.ok(studentService.getAllRandomGroups());
     }
+
+    @GetMapping("/groups")
+    public ResponseEntity<Map<String, List<StudentDto>>> getGroups(){
+        return ResponseEntity.ok(studentService.getGroups());
+    }
 }
