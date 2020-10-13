@@ -15,4 +15,8 @@ public class StudentService {
     public List<StudentDto> getAllStudents() {
         return studentRepository.getAllStudents();
     }
+
+    public void addStudent(String name) {
+        studentRepository.addStudent(name);
+    }
 }
