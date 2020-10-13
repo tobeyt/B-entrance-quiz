@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @CrossOrigin
@@ -26,5 +27,11 @@ public class StudentController {
     public ResponseEntity addStudent(@PathVariable String name){
         studentService.addStudent(name);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @GetMapping("/random")
+    public ResponseEntity<Map<String, List<StudentDto>>> getRandomGroups(){
+        studentService.getAllRandomGroups();
+        return ResponseEntity.ok(studentService.getAllRandomGroups());
     }
 }

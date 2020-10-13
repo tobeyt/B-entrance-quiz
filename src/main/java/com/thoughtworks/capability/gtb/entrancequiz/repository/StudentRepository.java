@@ -3,9 +3,7 @@ package com.thoughtworks.capability.gtb.entrancequiz.repository;
 import com.thoughtworks.capability.gtb.entrancequiz.dto.StudentDto;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Repository
 public class StudentRepository {
@@ -26,11 +24,34 @@ public class StudentRepository {
                     new StudentDto(14, "大乔"),
                     new StudentDto(15, "蔡文姬")));
 
+    Map<String, List<StudentDto>> groups = new HashMap<String, List<StudentDto>>(){
+        {
+            put("1 组", new ArrayList<>());
+            put("2 组", new ArrayList<>());
+            put("3 组", new ArrayList<>());
+            put("4 组", new ArrayList<>());
+            put("5 组", new ArrayList<>());
+            put("6 组", new ArrayList<>());
+        }
+    };
+
     public List<StudentDto> getAllStudents() {
         return students;
     }
 
     public void addStudent(String name) {
         students.add(new StudentDto(students.size() + 1, name));
+    }
+
+    public void clear() {
+        groups.values().forEach(List::clear);
+    }
+
+    public Map<String, List<StudentDto>> getGroups() {
+        return groups;
+    }
+
+    public void joinGroup(String groupName, StudentDto studentDto){
+        groups.get(groupName).add(studentDto);
     }
 }
