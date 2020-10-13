@@ -7,7 +7,7 @@ import java.util.*;
 
 @Repository
 public class StudentRepository {
-    List<StudentDto> students = new ArrayList<>(
+    private List<StudentDto> students = new ArrayList<>(
             Arrays.asList(new StudentDto(1, "成吉思汗"),
                     new StudentDto(2, "鲁班七号"),
                     new StudentDto(3, "太乙真人"),
@@ -24,7 +24,7 @@ public class StudentRepository {
                     new StudentDto(14, "大乔"),
                     new StudentDto(15, "蔡文姬")));
 
-    Map<String, List<StudentDto>> groups = new HashMap<String, List<StudentDto>>(){
+    private Map<String, List<StudentDto>> groups = new HashMap<String, List<StudentDto>>(){
         {
             put("1 组", new ArrayList<>());
             put("2 组", new ArrayList<>());
@@ -34,6 +34,18 @@ public class StudentRepository {
             put("6 组", new ArrayList<>());
         }
     };
+
+    public List<StudentDto> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<StudentDto> students) {
+        this.students = students;
+    }
+
+    public void setGroups(Map<String, List<StudentDto>> groups) {
+        this.groups = groups;
+    }
 
     public List<StudentDto> getAllStudents() {
         return students;
