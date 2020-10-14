@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
+// GTB：根据测试对象应该为StudentControllerTest
 class StudentRepositoryTest {
     @Autowired
     MockMvc mockMvc;
@@ -39,6 +40,7 @@ class StudentRepositoryTest {
     }
 
     @Test
+    // GTB: 拼写错误
     void shouldGetShuffedGroup() throws Exception {
         mockMvc.perform(get("/random"))
                 .andExpect(status().isOk());

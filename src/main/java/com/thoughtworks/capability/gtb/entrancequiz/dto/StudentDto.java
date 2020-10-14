@@ -1,6 +1,7 @@
 package com.thoughtworks.capability.gtb.entrancequiz.dto;
 
 
+// GTB: DTO对象不必要
 public class StudentDto {
     private int id;
     private String name;
@@ -10,6 +11,7 @@ public class StudentDto {
         this.name = name;
     }
 
+    // GTB: 方法顺序，无参构造应该在前
     public StudentDto() {
     }
 

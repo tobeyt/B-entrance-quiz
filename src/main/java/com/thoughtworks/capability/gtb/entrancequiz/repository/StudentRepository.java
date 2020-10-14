@@ -24,8 +24,11 @@ public class StudentRepository {
                     new StudentDto(14, "大乔"),
                     new StudentDto(15, "蔡文姬")));
 
+    // GTB: 不推荐使用双花括号初始化Map
+    // GTB: 小组应该在第一次分组时才创建
     private Map<String, List<StudentDto>> groups = new HashMap<String, List<StudentDto>>(){
         {
+            // GTB: Magic Number
             put("1 组", new ArrayList<>());
             put("2 组", new ArrayList<>());
             put("3 组", new ArrayList<>());
@@ -52,6 +55,7 @@ public class StudentRepository {
     }
 
     public void addStudent(String name) {
+        // GTB: “studentList.size() + 1”不可读，建议引入中间变量
         students.add(new StudentDto(students.size() + 1, name));
     }
 

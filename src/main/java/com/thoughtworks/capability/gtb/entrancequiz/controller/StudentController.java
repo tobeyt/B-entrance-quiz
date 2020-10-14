@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+// GTB: 推荐使用@RestController
 @Controller
 @CrossOrigin
 public class StudentController {
+    // GTB: 推荐使用构造函数d注入
+    // GTB: 封装性，字段应该使用private修饰
     @Autowired
     StudentService studentService;
 
@@ -23,6 +26,8 @@ public class StudentController {
         return ResponseEntity.ok(studentDtoList);
     }
 
+    // GTB: Restful实践, url不合理
+    // GTB: Restful实践, requestBody和responseBody不合理
     @PostMapping("/student/{name}")
     public ResponseEntity addStudent(@PathVariable String name){
         studentService.addStudent(name);
@@ -30,6 +35,7 @@ public class StudentController {
     }
 
     @GetMapping("/random")
+    // GTB: Restful实践, http动词不合理
     public ResponseEntity<Map<String, List<StudentDto>>> getRandomGroups(){
         studentService.getAllRandomGroups();
         return ResponseEntity.ok(studentService.getAllRandomGroups());
